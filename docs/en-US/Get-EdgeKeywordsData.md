@@ -12,7 +12,7 @@ Retrieves the keywords from the Microsoft Edge Web Data SQLite database.
 
 ## SYNTAX
 
-```
+```powershell
 Get-EdgeKeywordsData [-Database] <String> [[-As] <String>] [<CommonParameters>]
 ```
 
@@ -21,16 +21,18 @@ Retrieves the keywords from the Microsoft Edge Web Data SQLite database.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Get Web Data from Stable Edge Browser
+
+```powershell
 Get-EdgeKeywordsData -Database "$Env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Web Data"
 ```
 
-# Returns the keywords from the Microsoft Edge Web Data SQLite database.
+Returns the keywords from the Microsoft Edge Web Data `SQLite` database.
 
 ## PARAMETERS
 
 ### -Database
+
 The path to the Microsoft Edge Web Data SQLite database.
 
 ```yaml
@@ -46,9 +48,10 @@ Accept wildcard characters: False
 ```
 
 ### -As
+
 The type of object to return.
-The default is \`PSCustomObject\`.
-Can choose one of \`DataSet\`, \`DataTable\`, \`DataRow\`, \`PSObject\`, or \`SingleValue\`.
+The default is `PSCustomObject`.
+Can choose one of `DataSet`, `DataTable`, `DataRow`, `PSObject`, or `SingleValue`.
 
 ```yaml
 Type: String
@@ -63,31 +66,41 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: `-Debug`, `-ErrorAction`, `-ErrorVariable`, `-InformationAction`,
+`-InformationVariable`, `-OutVariable`, `-OutBuffer`, `-PipelineVariable`, `-Verbose`, `-WarningAction`,
+and `-WarningVariable`.
+
+For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
-### The keywords from the Microsoft Edge Web Data SQLite database.
-### As PSObject: System.Management.Automation.PSCustomObject
-### As DataSet: System.Data.DataSet
-### As DataTable: System.Data.DataTable
-### As DataRow: System.Data.DataRow
-### As SingleValue: Depends on the data type of the column selected
+The keywords from the Microsoft Edge Web Data SQLite database.
+
+- PSObject: `System.Management.Automation.PSCustomObject`
+- DataSet: `System.Data.DataSet`
+- DataTable: `System.Data.DataTable`
+- DataRow: `System.Data.DataRow`
+- SingleValue: Depends on the data type of the column selected
+
 ## NOTES
-Microsoft Edge stores the keywords in the Web Data SQLite database in the table named \`keywords\`.
 
-Web Data Paths:
-- Microsoft Edge Stable: the database is located at \`$Env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Web Data\`.
-- Microsoft Edge Beta: the database is located at \`$Env:LOCALAPPDATA\Microsoft\Edge Beta\User Data\Default\Web Data\`.
-- Microsoft Edge Dev: the database is located at \`$Env:LOCALAPPDATA\Microsoft\Edge Dev\User Data\Default\Web Data\`.
-- Microsoft Edge Canary: the database is located at \`$Env:LOCALAPPDATA\Microsoft\Edge SxS\User Data\Default\Web Data\`.
+Microsoft Edge stores the keywords in the *Web Data* `SQLite` database in the table named *keywords*.
 
-The "Web Data" database is a SQLite database.
-The "keywords" table has the following schema:
+*Web Data* Paths:
 
-\`\`\`sql
+- **Microsoft Edge Stable**: the database is located at `$Env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Web Data`.
+- **Microsoft Edge Beta**: the database is located at `$Env:LOCALAPPDATA\Microsoft\Edge Beta\User Data\Default\Web Data`.
+- **Microsoft Edge Dev**: the database is located at `$Env:LOCALAPPDATA\Microsoft\Edge Dev\User Data\Default\Web Data`.
+- **Microsoft Edge Canary**: the database is located at `$Env:LOCALAPPDATA\Microsoft\Edge SxS\User Data\Default\Web Data`.
+
+The **Web Data** database is a `SQLite` database.
+
+The **keywords** table has the following schema:
+
+```sql
 CREATE TABLE keywords (
     id INTEGER PRIMARY KEY,
     short_name VARCHAR NOT NULL,
@@ -115,16 +128,15 @@ CREATE TABLE keywords (
     is_active INTEGER DEFAULT 0,
     starter_pack_id INTEGER DEFAULT 0
 );
-\`\`\`
+```
 
-The \`url\` column contains the URL of the search engine.
-The \`keyword\` column contains the keyword to use to trigger the search.
+The `url` column contains the URL of the search engine.
+
+The `keyword` column contains the keyword to use to trigger the search.
 
 ## RELATED LINKS
 
-[https://github.com/jimbrig/PSEdgeKeywords/PSEdgeKeywords/Public/Get-EdgeKeywordsData.ps1](https://github.com/jimbrig/PSEdgeKeywords/PSEdgeKeywords/Public/Get-EdgeKeywordsData.ps1)
+- [Get-EdgeKeywordsData.ps1](https://github.com/jimbrig/PSEdgeKeywords/PSEdgeKeywords/Public/Get-EdgeKeywordsData.ps1)
 
-[Get-EdgeKeywordsData]()
-
-[https://www.sqlite.org/lang.html](https://www.sqlite.org/lang.html)
+- [https://www.sqlite.org/lang.html](https://www.sqlite.org/lang.html)
 
