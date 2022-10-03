@@ -1,0 +1,9 @@
+# Don't check in the Output dir
+Output/
+
+# Ignore temp/scratch dirs
+temp/
+scratch/
+
+# Ignore test results 
+testResults.xml
