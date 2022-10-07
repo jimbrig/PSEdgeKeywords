@@ -5,11 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "PowerShell: Launch Current File",
+            "name": "Test Module",
             "type": "PowerShell",
             "request": "launch",
-            "script": "${file}",
-            "cwd": "${file}"
+            "script": "${workspaceFolder}/build.ps1",
+            "args": [
+                "-Task",
+                "Test",
+                "-Bootstrap",
+                "-Verbose"
+            ],
+            "cwd": "${workspaceFolder}",
+            "createTemporaryIntegratedConsole": true
+        },
+        {
+            "name": "PowerShell Interactive Session",
+            "type": "PowerShell",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "createTemporaryIntegratedConsole": true
         }
     ]
 }
