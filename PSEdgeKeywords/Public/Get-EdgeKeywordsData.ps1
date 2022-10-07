@@ -11,14 +11,13 @@ Function Get-EdgeKeywordsData {
         The type of object to return. The default is `PSCustomObject`.
         Can choose one of `DataSet`, `DataTable`, `DataRow`, `PSObject`, or `SingleValue`.
     .OUTPUTS
-        The keywords from the Microsoft Edge Web Data SQLite database.
-
         As PSObject: System.Management.Automation.PSCustomObject
         As DataSet: System.Data.DataSet
         As DataTable: System.Data.DataTable
         As DataRow: System.Data.DataRow
         As SingleValue: Depends on the data type of the column selected
 
+        The keywords from the Microsoft Edge Web Data SQLite database.
     .EXAMPLE
         Get-EdgeKeywordsData -Database "$Env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Web Data"
 
