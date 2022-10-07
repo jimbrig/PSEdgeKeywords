@@ -8,8 +8,8 @@ $PSVersion = $PSVersionTable.PSVersion.Major
 Import-Module PSSQLite
 Import-Module $PSScriptRoot\..\PSEdgeKeywords -Force
 
-$DataSource = "$PSScriptRoot\TestWebData.SQLite"
-$SQLCreateScript = "$PSScriptRoot\CreateKeywords.SQL"
+$DataSource = "$PSScriptRoot\sql\TestWebData.SQLite"
+$SQLCreateScript = "$PSScriptRoot\sql\CreateKeywords.SQL"
 
 If (Test-Path $DataSource) {
     Remove-Item -Path $DataSource -Force
@@ -24,13 +24,13 @@ Describe "Output Keywords from Web Data Database" {
         Set-StrictMode -Version Latest
 
         It 'should retrieve PSCustomObject containing Edge Keywords' {
-            $DataSource = "$PSScriptRoot\TestWebData.SQLite"
+            $DataSource = "$PSScriptRoot\sql\TestWebData.SQLite"
             $Keywords = Get-EdgeKeywordsData -Database $DataSource -As PSObject # Invoke-SQLiteQuery -DataSource $DataSource -Query "SELECT * FROM keywords" -As PSObject
             $Keywords | Should -BeOfType PSCustomObject
         }
 
         It 'should be the correct number of rows' {
-            $DataSource = "$PSScriptRoot\TestWebData.SQLite"
+            $DataSource = "$PSScriptRoot\sql\TestWebData.SQLite"
             (Invoke-SqliteQuery -DataSource $DataSource -Query "SELECT COUNT(*) FROM keywords" -As SingleValue) -eq 4 | Should -Be $true
         }
 
