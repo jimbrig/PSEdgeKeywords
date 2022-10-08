@@ -51,9 +51,9 @@ Description = 'PowerShell Core Module for Configuring, Backing Up, and Managing 
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(
-    @{ModuleName = 'PSSQLite'; ModuleVersion = '1.1.0'}
-)
+# RequiredModules = @(
+#     @{ModuleName = 'PSSQLite'; ModuleVersion = '1.1.0'}
+# )
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
