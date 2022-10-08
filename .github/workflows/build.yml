@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: PesterTests
-          path: ${{github.workspace}}/Specs
+          path: ${{github.workspace}}/tests/specs
       - name: Upload RequiredModules.psd1
         uses: actions/upload-artifact@v2
         with:
@@ -43,7 +43,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-latest]
     needs: build
     steps:
       - name: Download Build Output
@@ -51,9 +51,13 @@ jobs:
       - uses: PoshCode/Actions/install-requiredmodules@v1
       - uses: PoshCode/Actions/pester@v1
         with:
-          codeCoveragePath: Modules/Configuration
-          moduleUnderTest: Configuration
+          codeCoveragePath: Modules/PSEdgeKeywords
+          moduleUnderTest: PSEdgeKeywords
           additionalModulePaths: ${{github.workspace}}/Modules
+      - name: Publish Test Results
+        uses: zyborg/dotnet-tests-report@v1
+        with:
+          test_results_path: results.xml
       - name: Upload Results
         uses: actions/upload-artifact@v2
         with:
