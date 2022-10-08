@@ -4,7 +4,7 @@ properties {
     $PSBPreference.Help.DefaultLocale = 'en-US'
     $PSBPreference.Test.OutputFile = 'out/testResults.xml'
 
-    if ($galleryApiKey) {
+    if ($PSGalleryApiKey) {
         $PSBPreference.Publish.PSRepositoryApiKey = $galleryApiKey.GetNetworkCredential().password
     }
 }
