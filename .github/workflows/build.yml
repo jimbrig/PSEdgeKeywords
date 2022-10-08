@@ -1,7 +1,13 @@
 name: Build Module
-on: [push, pull_request, workflow_dispatch]
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
 
 jobs:
+
   build:
     runs-on: windows-latest
     steps:
@@ -17,8 +23,9 @@ jobs:
         uses: PoshCode/actions/build-module@v1
         with:
           version: ${{ steps.gitversion.outputs.LegacySemVerPadded }}
-          destination: ${{github.workspace}}/Output
+          destination: ${{github.workspace}}/Output   
       - name: Upload Build Output
+        id: build-artifact
         uses: actions/upload-artifact@v2
         with:
           name: Modules
@@ -28,6 +35,10 @@ jobs:
         with:
           name: PesterTests
           path: ${{github.workspace}}/tests
+      - name: Publish Test Results
+        uses: zyborg/dotnet-tests-report@v1
+        with:
+          test_results_path: ${{github.workspace}}/tests/out/testResults.xml
       - name: Upload RequiredModules.psd1
         uses: actions/upload-artifact@v2
         with:
@@ -38,13 +49,37 @@ jobs:
         with:
           name: ScriptAnalyzer
           path: ${{github.workspace}}/PSScriptAnalyzerSettings.psd1
-      - name: Publish Test Results
-        uses: zyborg/dotnet-tests-report@v1
+          
+      - name: Release Module
+        uses: actions/create-release@v1
+        id: create_release
         with:
-          test_results_path: ./tests/out/testResults.xml
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v2
+          draft: false
+          prerelease: true
+          release_name: ${{ steps.gitversion.outputs.LegacySemVerPadded }}
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        id: download
         with:
-          name: Test Results
-          path: ./tests/out/testResults.xml
-
+          name: 'PSEdgeKeywords_Assets'
+          
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
+      
+      - name: Upload Build Output to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{steps.download.outputs.download-path}}
+          #asset_name: PSEdgeKeywords
+          #asset_content_type: application/zip
+          
+     
+          
