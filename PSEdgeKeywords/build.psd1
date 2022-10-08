@@ -3,7 +3,7 @@
 @{
     ModuleManifest  = "PSEdgeKeywords.psd1"
     # Subsequent relative paths are to the ModuleManifest
-    OutputDirectory = "../Build"
+    OutputDirectory = "../Output"
     VersionedOutputDirectory = $true
-    CopyDirectories = @('SQL')
+    CopyDirectories = @('SQL', 'en-US')
 }
