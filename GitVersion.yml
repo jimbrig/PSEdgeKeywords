@@ -1,7 +1,8 @@
 assembly-versioning-scheme: MajorMinorPatch
 assembly-informational-format: '{NuGetVersionV2}+Build.{env:BUILDCOUNT ?? 0}.Date.{CommitDate}.Branch.{env:SAFEBRANCHNAME ?? unknown}.Sha.{Sha}'
 assembly-versioning-format: '{Major}.{Minor}.{Patch}.{env:BUILDCOUNT ?? 0}'
-mode: Mainline
+mode: ContinuousDelivery
+next-version: 0.0.2
 major-version-bump-message: '\+?semver:\s?(breaking|major)'
 minor-version-bump-message: '\+?semver:\s?(feature|minor)'
 patch-version-bump-message: '\+?semver:\s?(fix|patch)'

@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Publish
+        id: publish
         shell: pwsh
         run: |
           $apiKey = '${{ secrets.PS_GALLERY_API_KEY }}' | ConvertTo-SecureString -AsPlainText -Force
