@@ -57,7 +57,7 @@ jobs:
           draft: false
           prerelease: true
           release_name: ${{ steps.gitversion.outputs.LegacySemVerPadded }}
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ steps.gitversion.outputs.LegacySemVerPadded }}
           body_path: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ github.token }}
