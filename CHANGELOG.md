@@ -7,6 +7,7 @@
 
 - Fix tests implementing new structure
 - Required modules versions
+- Adjust build.yml
 
 ### Configuration
 
@@ -59,6 +60,7 @@
 - Autopublish 2022-10-08T00:11:06Z
 - Autopublish 2022-10-08T00:14:12Z
 - Autopublish 2022-10-08T00:16:53Z
+- Autopublish 2022-10-08T00:17:26Z
 
 ### Testing
 
