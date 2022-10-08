@@ -38,28 +38,13 @@ jobs:
         with:
           name: ScriptAnalyzer
           path: ${{github.workspace}}/PSScriptAnalyzerSettings.psd1
-  test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest]
-    needs: build
-    steps:
-      - name: Download Build Output
-        uses: actions/download-artifact@v2
-      - uses: PoshCode/Actions/install-requiredmodules@v1
-      - uses: PoshCode/Actions/pester@v1
-        with:
-          codeCoveragePath: Modules/PSEdgeKeywords
-          moduleUnderTest: PSEdgeKeywords
-          additionalModulePaths: ${{github.workspace}}/Modules
       - name: Publish Test Results
         uses: zyborg/dotnet-tests-report@v1
         with:
-          test_results_path: results.xml
-      - name: Upload Results
+          test_results_path: ${{github.workspace}}/tests/out/testResults.xml
+      - name: Upload Test Results
         uses: actions/upload-artifact@v2
         with:
-          name: Pester Results
-          path: ${{github.workspace}}/*.xml
+          name: Test Results
+          path: ${{github.workspace}}/tests/out/testResults.xml
+
