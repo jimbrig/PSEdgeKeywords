@@ -5,8 +5,8 @@ Output/
 temp/
 scratch/
 
-# Ignore test results 
-testResults.xml
+# Ignore test results
+# testResults.xml
 
 # ignore *.bak files
 *.bak
