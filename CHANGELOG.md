@@ -1,7 +1,7 @@
 # Changelog
 *All notable changes to this project will be documented in this file.*
 
-## [0.0.0.9999] - Unreleased
+## [0.0.2] - 2022-10-08
 
 ### Features
 
@@ -13,10 +13,15 @@
 - Autopublish 2022-10-08T00:36:40Z
 - Autopublish 2022-10-08T00:41:48Z
 - Autopublish 2022-10-08T00:44:09Z
+- Autopublish 2022-10-08T00:51:46Z
 
 ### Gitflow-hotfix-stash
 
 - Testsdir
+
+### Gitflow-release-stash
+
+- V0.0.2
 
 ## [0.0.1] - 2022-10-08
 
