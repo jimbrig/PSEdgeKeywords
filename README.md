@@ -1,8 +1,13 @@
-# PSEdgeKeywords
-
-![](./assets/logo.png)
+# PSEdgeKeywords <img src="./assets/logo.png" align="right" />
 
 > PowerShell Core Module for Configuring, Backing Up, and Managing Microsoft Edge Search Engine "Keywords"
+
+***
+[![Changelog](https://github.com/jimbrig/PSEdgeKeywords/actions/workflows/git-cliff.yml/badge.svg)](https://github.com/jimbrig/PSEdgeKeywords/actions/workflows/git-cliff.yml)
+[![Test Module](https://github.com/jimbrig/PSEdgeKeywords/actions/workflows/test.yml/badge.svg)](https://github.com/jimbrig/PSEdgeKeywords/actions/workflows/test.yml)
+[![Build Module](https://github.com/jimbrig/PSEdgeKeywords/actions/workflows/build.yml/badge.svg)](https://github.com/jimbrig/PSEdgeKeywords/actions/workflows/build.yml)
+[![Publish](https://github.com/jimbrig/PSEdgeKeywords/actions/workflows/publish.yml/badge.svg)](https://github.com/jimbrig/PSEdgeKeywords/actions/workflows/publish.yml)
+***
 
 *NOTE: This project was inspired by [erbanku/custom-search-engines-backup](https://github.com/erbanku/custom-search-engines-backup).*
 
