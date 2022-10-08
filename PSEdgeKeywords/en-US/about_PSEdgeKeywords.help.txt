@@ -1,0 +1,49 @@
+TOPIC
+    about_PSEdgeKeywords
+
+SHORT DESCRIPTION
+    Set of tools for managing your custom SearchEngines/Keywords for the Microsoft Edge Browser.
+
+LONG DESCRIPTION
+    This module is an attempt to provide a way to manage your custom SearchEngines/Keywords for the Microsoft Edge Browser.
+
+    The module provides the following functions:
+        - Get-PSEdgeKeywords
+        - Set-PSEdgeKeywords
+        - Remove-PSEdgeKeywords
+        - Test-PSEdgeKeywords
+        - Export-PSEdgeKeywords
+        - Import-PSEdgeKeywords
+
+    The module provides the following aliases:
+        - Get-PSEdgeKeyword
+        - Set-PSEdgeKeyword
+        - Remove-PSEdgeKeyword
+        - Test-PSEdgeKeyword
+        - Export-PSEdgeKeyword
+        - Import-PSEdgeKeyword
+
+    The module provides the following cmdlets:
+        - Get-PSEdgeKeyword
+        - Set-PSEdgeKeyword
+        - Remove-PSEdgeKeyword
+        - Test-PSEdgeKeyword
+        - Export-PSEdgeKeyword
+        - Import-PSEdgeKeyword
+
+EXAMPLES
+    PS C:\> Get-EdgeKeywordsData -Database "$Env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Web Data"
+
+        Returns the keywords from the Microsoft Edge Web Data SQLite database.
+
+NOTE:
+    This project was inspired by [erbanku/custom-search-engines-backup](https://github.com/erbanku/custom-search-engines-backup).
+
+TROUBLESHOOTING NOTE:
+    Look out on the Github repository for issues and new releases.
+
+SEE ALSO
+  - https://github.com/jimbrig/PSEdgeTools
+
+KEYWORDS
+      Module, Utility, Edge, Browser, SearchEngine
