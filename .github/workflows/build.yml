@@ -68,6 +68,11 @@ jobs:
           
       - name: 'Echo download path'
         run: echo ${{steps.download.outputs.download-path}}
+        
+      - name: Zip Artifacts
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r ${{steps.download.outputs.download-path}}.zip ${{steps.download.outputs.download-path}}
       
       - name: Upload Build Output to Release
         uses: actions/upload-release-asset@v1
@@ -75,7 +80,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{steps.download.outputs.download-path}}
+          asset_path: ${{steps.download.outputs.download-path}}.zip
           asset_name: PSEdgeKeywords-Artifacts.zip
           asset_content_type: application/zip
           
