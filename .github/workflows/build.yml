@@ -23,7 +23,33 @@ jobs:
         uses: PoshCode/actions/build-module@v1
         with:
           version: ${{ steps.gitversion.outputs.LegacySemVerPadded }}
-          destination: ${{github.workspace}}/Output          
+          destination: ${{github.workspace}}/Output   
+      - name: Upload Build Output
+        id: build-artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Modules
+          path: ${{github.workspace}}/Output
+      - name: Upload Tests
+        uses: actions/upload-artifact@v2
+        with:
+          name: PesterTests
+          path: ${{github.workspace}}/tests
+      - name: Publish Test Results
+        uses: zyborg/dotnet-tests-report@v1
+        with:
+          test_results_path: ${{github.workspace}}/tests/out/testResults.xml
+      - name: Upload RequiredModules.psd1
+        uses: actions/upload-artifact@v2
+        with:
+          name: RequiredModules
+          path: ${{github.workspace}}/RequiredModules.psd1
+      - name: Upload PSScriptAnalyzerSettings.psd1
+        uses: actions/upload-artifact@v2
+        with:
+          name: ScriptAnalyzer
+          path: ${{github.workspace}}/PSScriptAnalyzerSettings.psd1
+          
       - name: Release Module
         uses: actions/create-release@v1
         id: create_release
@@ -35,59 +61,25 @@ jobs:
           body_path: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: 'PSEdgeKeywords_Assets'
+          
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
       
-      - name: Upload Build Output
+      - name: Upload Build Output to Release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{github.workspace}}/Output
-          asset_name: PSEdgeKeywords
-          asset_content_type: application/zip
+          asset_path: ${{steps.download.outputs.download-path}}
+          #asset_name: PSEdgeKeywords
+          #asset_content_type: application/zip
           
-      - name: Upload Tests
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{github.workspace}}/tests
-          asset_name: PesterTests
-          asset_content_type: application/zip
-          
-      - name: Upload RequiredModules.psd1
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{github.workspace}}/RequiredModules.psd1
-          asset_name: RequiredModules.psd1
-          asset_content_type: application/zip
-        
-      - name: Upload PSScriptAnalyzerSettings.psd1
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{github.workspace}}/PSScriptAnalyzerSettings.psd1
-          asset_name: ScriptAnalyzer.psd1
-          asset_content_type: application/zip    
-      
-      - name: Publish Test Results
-        uses: zyborg/dotnet-tests-report@v1
-        with:
-          test_results_path: ${{github.workspace}}/tests/out/testResults.xml
-          
-      - name: Upload Test Results
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{github.workspace}}/tests/out/testResults.xml
-          asset_name: TestResults.xml
-          asset_content_type: application/xml
+     
           
