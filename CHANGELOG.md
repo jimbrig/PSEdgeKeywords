@@ -8,6 +8,7 @@
 - Fix tests implementing new structure
 - Required modules versions
 - Adjust build.yml
+- Remove require mods from manifest
 
 ### Configuration
 
@@ -61,6 +62,7 @@
 - Autopublish 2022-10-08T00:14:12Z
 - Autopublish 2022-10-08T00:16:53Z
 - Autopublish 2022-10-08T00:17:26Z
+- Autopublish 2022-10-08T00:24:22Z
 
 ### Testing
 
