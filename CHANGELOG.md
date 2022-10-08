@@ -3,6 +3,14 @@
 
 ## [0.0.0.9999] - Unreleased
 
+### Miscellaneous Tasks
+
+- Autopublish 2022-10-08T00:57:17Z
+- Autopublish 2022-10-08T00:58:34Z
+- Autopublish 2022-10-08T01:02:48Z
+
+## [0.0.2] - 2022-10-08
+
 ### Features
 
 - Add galleryApiKey property
@@ -13,10 +21,15 @@
 - Autopublish 2022-10-08T00:36:40Z
 - Autopublish 2022-10-08T00:41:48Z
 - Autopublish 2022-10-08T00:44:09Z
+- Autopublish 2022-10-08T00:51:46Z
 
 ### Gitflow-hotfix-stash
 
 - Testsdir
+
+### Gitflow-release-stash
+
+- V0.0.2
 
 ## [0.0.1] - 2022-10-08
 
