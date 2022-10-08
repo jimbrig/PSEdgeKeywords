@@ -1,11 +1,35 @@
 # Changelog
 *All notable changes to this project will be documented in this file.*
 
+## [0.0.0.9999] - Unreleased
+
+### Miscellaneous Tasks
+
+- Autopublish 2022-10-08T00:57:17Z
+- Autopublish 2022-10-08T00:58:34Z
+- Autopublish 2022-10-08T01:02:48Z
+
 ## [0.0.2] - 2022-10-08
 
 ### Features
 
 - Add galleryApiKey property
+
+### Miscellaneous Tasks
+
+- Autopublish 2022-10-08T00:31:21Z
+- Autopublish 2022-10-08T00:36:40Z
+- Autopublish 2022-10-08T00:41:48Z
+- Autopublish 2022-10-08T00:44:09Z
+- Autopublish 2022-10-08T00:51:46Z
+
+### Gitflow-hotfix-stash
+
+- Testsdir
+
+### Gitflow-release-stash
+
+- V0.0.2
 
 ## [0.0.1] - 2022-10-08
 
@@ -60,10 +84,25 @@
 - Add ExportKeywords.sql script
 - Add ImportKeywords.sql
 
+### Miscellaneous Tasks
+
+- Autopublish 2022-10-03T01:11:41Z
+- Autopublish 2022-10-08T00:09:37Z
+- Autopublish 2022-10-08T00:11:06Z
+- Autopublish 2022-10-08T00:14:12Z
+- Autopublish 2022-10-08T00:16:53Z
+- Autopublish 2022-10-08T00:17:26Z
+- Autopublish 2022-10-08T00:24:22Z
+- Autopublish 2022-10-08T00:28:22Z
+
 ### Testing
 
 - Add initial suite of pester tests
 - Add sql dir for tests with mock sqlite db
+
+### Gitflow-feature-stash
+
+- Fixversion
 
 ### Release
 
