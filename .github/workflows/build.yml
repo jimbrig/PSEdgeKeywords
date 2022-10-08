@@ -41,10 +41,10 @@ jobs:
       - name: Publish Test Results
         uses: zyborg/dotnet-tests-report@v1
         with:
-          test_results_path: ${{github.workspace}}/tests/out/testResults.xml
+          test_results_path: ./tests/out/testResults.xml
       - name: Upload Test Results
         uses: actions/upload-artifact@v2
         with:
           name: Test Results
-          path: ${{github.workspace}}/tests/out/testResults.xml
+          path: ./tests/out/testResults.xml
 
