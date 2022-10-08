@@ -6,6 +6,7 @@
 ### Bug Fixes
 
 - Fix tests implementing new structure
+- Required modules versions
 
 ### Configuration
 
@@ -56,6 +57,7 @@
 - Autopublish 2022-10-03T01:11:41Z
 - Autopublish 2022-10-08T00:09:37Z
 - Autopublish 2022-10-08T00:11:06Z
+- Autopublish 2022-10-08T00:14:12Z
 
 ### Testing
 
